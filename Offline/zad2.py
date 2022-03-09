@@ -11,7 +11,7 @@ def partition(L, end):
     pivot = L  # pivot to pierwszy element, nie ma sensu przechodzic calej listy i brac ostatniego
     head = L  # przechowuje wskaznik na 1 element
     while L.next != end:
-        if L.next.key < pivot.key:
+        if L.next.value < pivot.value:
             tmp = L.next
             L.next = L.next.next
             tmp.next = head
@@ -69,7 +69,7 @@ if L == None:
 
 P = L
 while P.next != None:
-    if P.value > P.next.key:
+    if P.value > P.next.value:
         print("Błąd sortowania")
         exit(0)
     P = P.next

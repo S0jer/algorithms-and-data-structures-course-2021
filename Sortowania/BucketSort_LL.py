@@ -14,12 +14,12 @@ def insertion_sort(f):
     while f != None:
         curr = f
         f = f.next
-        if curr.key < sortedlist.value:
+        if curr.value < sortedlist.value:
             curr.next = sortedlist
             sortedlist = curr
         else:
             search = sortedlist
-            while search.next != None and curr.key > search.next.key:
+            while search.next != None and curr.value > search.next.value:
                 search = search.next
             curr.next = search.next
             search.next = curr
