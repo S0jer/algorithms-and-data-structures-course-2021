@@ -45,7 +45,7 @@ def inversion(T):
 
 if __name__ == '__main__':
     licznik = 0
-    T = [random.randint(1, 100) for i in range(4)]
+    T = [random.randint(1, 100) for i in range(40)]
     print(T)
     x = inversion(T)
     mergesort_inv(T)
