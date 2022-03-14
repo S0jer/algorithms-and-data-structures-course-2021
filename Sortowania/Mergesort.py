@@ -34,7 +34,7 @@ def mergesort(T):
 seed(42)
 
 n = 10
-T = [randint(1, 10) for i in range(10)]
+T = [randint(1, 100) for i in range(100)]
 
 print("przed sortowaniem: T =", T)
 T = mergesort(T)
