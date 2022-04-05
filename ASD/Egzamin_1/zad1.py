@@ -29,24 +29,19 @@ def chaos_index(T):
 
 def merge(L, R):
     i, j, z, result = 0, 0, 0, []
-    result += L[:]
-    result += R[:]
     while i < len(L) and j < len(R):
         if L[i][0] <= R[j][0]:
-            result[z] = L[i]
+            result.append(L[i])
             i += 1
         else:
-            result[z] = R[j]
+            result.append(R[j])
             j += 1
         z += 1
 
-    for a in range(j, len(R)):
-        result[z] = R[a]
-        z += 1
-
-    for a in range(i, len(L)):
-        result[z] = L[a]
-        z += 1
+    if j < len(R):
+        result += R[j:]
+    elif i < len(L):
+        result += L[i:]
 
     return result
 

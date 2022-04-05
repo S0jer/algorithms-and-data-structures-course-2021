@@ -3,36 +3,9 @@
 # Proszę zaimplementować funkcję SumSort tak, by działała możliwie jak najszybciej. Proszę
 # oszacować i podać jej złożoność czasową
 
-def selection_sort(arr, a, b):
-    for i in range(a, b, +1):
-        min_i = i
-        for j in range(i + 1, b, + 1):
-            if arr[j] < arr[min_i]:
-                min_i = j
-        arr[i], arr[min_i] = arr[min_i], arr[i]
-
-
-def magic_five(A, a, b):
-    id, a_0 = a, a
-    if b - a > 4:
-        for i in range(a, b + 1, +5):  # przechodzimy przez podany zakres dzieląc go na grupy po 5 elementów
-            selection_sort(A, a, a + 5)  # sortujemy dany fragment
-            A[id], A[a + 2] = A[a + 2], A[id]  # przenosimy medianę na początek listy
-            id += 1
-        if b - a != 0:  # jak w pętli for, dla grupy mniej licznej niż 5 elementów
-            selection_sort(A, a, b + 1)
-            A[id], A[(b + a) // 2] = A[(b + a) // 2], A[id]
-        # wywołujemy dla zakresu tablicy gdzie są mediany
-        return magic_five(A, a_0, id)
-    else:
-        # wyznaczamy medianę z median
-        selection_sort(A, a, b + 1)
-        id = (a + b) // 2
-        return id
-
 
 def partition(A, p, r):
-    id = magic_five(A, p, r)  # (A, p, r ,p ,p)
+    id = A[r]
     x = A[id]
     i = p - 1
     A[r], A[id] = A[id], A[r]

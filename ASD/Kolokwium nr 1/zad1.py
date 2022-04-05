@@ -39,6 +39,7 @@ def Median(T):
 
     start = (len(T) ** 2 - len(T)) // 2
     end = len(T) ** 2 - len(T)
+    print(start, end)
     select(A, 0, len(A) - 1, start)
     select(A, 0, len(A) - 1, end)
     median = -1
@@ -46,6 +47,7 @@ def Median(T):
     minus = start + len(T) - end
     after = end + minus  # wyznaczam na której wartości kończy się "przekątna"
     check = start
+
     for j in range(len(T)):
         median += 1
         T[j][median] = A[check]
@@ -60,7 +62,8 @@ def Median(T):
             T[j][a] = A[after]
             after += 1
             a += 1
-    return
+
+    return T
 
 
 runtests(Median)

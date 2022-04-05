@@ -37,14 +37,14 @@ def fixSortedList(head):
     while p.next:
         prev = p
         p = p.next
-        if p.next.key < p.value and prev.value < p.value:
+        if p.next.value < p.value and prev.value < p.value:
             tmp = Node()
-            tmp.value = p.next.key
+            tmp.value = p.next.value
             std = Node()
             std.value = p.value
             prev.next = p.next.next
             break
-    if std.value < head.key:
+    if std.value < head.value:
         std.next = head
         head = std
     if tmp.value < head.value:
@@ -68,7 +68,7 @@ def fixSortedList(head):
     while p.next:
         prev = p
         p = p.next
-        if prev.value < std.value and std.value < p.key:
+        if prev.value < std.value and std.value < p.value:
             prev.next = std
             std.next = p
             break

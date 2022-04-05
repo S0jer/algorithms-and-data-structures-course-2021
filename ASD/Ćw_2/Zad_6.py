@@ -6,7 +6,6 @@ def quicksort(A, p, r):
     while p < r:
         q = partition(A, p, r)
         if (q - p) < (r - p):
-
             quicksort(A, p, q - 1)
             p = q + 1
         else:
@@ -26,16 +25,13 @@ def partition(A, p, r):
 
 
 def przedzialy(T):
-    n = len(T)
-    mx = 0
-    A = []
-    ma = 0
-    mb = 0
+    n, mx, ma, mb, A = len(T), 0, 0, 0, []
+
     for i in range(n):
         A.append([T[i], 0])
     print(A)
     quicksort(A, 0, len(A) - 1)
-    print(A)
+
     for i in range(n):
         for j in range(i, -1, -1):
             if A[i][0][0] > A[j][0][1]:
@@ -43,9 +39,11 @@ def przedzialy(T):
             if A[i][0][0] < A[j][0][0]:
                 A[i][1] += 1
                 if A[i][1] > mx:
-                    ma = A[i][0][0]
-                    mb = A[i][0][1]
-    return (ma, mb)
+                    # ma = A[i][0][0]
+                    # mb = A[i][0][1]
+                    mx = A[i][1]
+    print(A)
+    return mx
 
 
 if __name__ == '__main__':

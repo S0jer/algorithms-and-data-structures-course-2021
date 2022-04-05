@@ -29,11 +29,12 @@ def radix_sort(T, D):
     else:
         return T
 
+
 # Tablica i według której litery
 def radix(A, j):
     for i in range(len(A)):
         while i > 0:
-            if (A[i][j] < A[i - 1][j]):
+            if A[i][j] < A[i - 1][j]:
                 A[i], A[i - 1] = A[i - 1], A[i]
             i -= 1
     return A
@@ -45,7 +46,7 @@ if __name__ == '__main__':
     T_S = ["kraatr","artat","kot","kit","ati","kil"]
     print(T)
     T = radix_sort(T, f_max(T))
-    print(T, "\n")
+    print(T_S, "\n")
     A = ["kra", "art", "kot", "kit", "ati", "kil"]
     print(radix(A, 2))
     print(radix(A, 1))
