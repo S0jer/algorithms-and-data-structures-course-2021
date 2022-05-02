@@ -1,12 +1,12 @@
 from zad3testy import runtests
 from queue import PriorityQueue
 from math import inf
+
 # Paweł Jaśkowiec, 406165
 
 # Pomysł polega na przechodzeniu ppo pierwszym wierszu i sprawdzaniu wielkości plamy kiedy mozna zatankować
 # (w trakcie rrealizacji :()
 
-from queue import Queue
 
 
 def plan(T):
