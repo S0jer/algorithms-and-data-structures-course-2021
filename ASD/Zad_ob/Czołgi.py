@@ -50,7 +50,7 @@ def tank_1b(F, B, C, d):
                 c_min_2 = C[x]
                 a_1 = x
             x += 1
-
+        print(a_1, prize)
         if c_min_1 < c_min_2:
             prize += (d_f - d) * C[a]
             d = d_f
@@ -97,7 +97,7 @@ def tank_2b(d, S, P, L):
         wynik = min(wynik, dp[j])
         j -= 1
 
-    print(dp, wynik)
+    return dp, wynik
 
 
 L = 10
@@ -110,4 +110,4 @@ t = 45
 # P = [2, 1, 2, 3, 3, 1, 1, 3, 2, 2, 1, 2, 2, 3, 2, 3, 3, 1, 1, 2]
 # t = 21
 
-print(tank_1(t, S, L))
+print(tank_2b(t, S, P, L))

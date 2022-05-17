@@ -45,9 +45,8 @@ def maximin_v2(A, k):
             for o in range(i):
                 dp[i][t] = min(dp[i - o][t - 1], abs(sums[i] - sums[o]))
 
-        for i in dp:
-            print(i)
-        print()
+    for i in dp:
+        print(i)
 
 
 if __name__ == '__main__':
@@ -57,7 +56,7 @@ if __name__ == '__main__':
     C = [100, 99, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     k = 4
 
-    maximin_v2(B, k)
+    maximin_v2(A, k)
 
     # maximin(A, k - 1)
     # maximin(B, k - 1)

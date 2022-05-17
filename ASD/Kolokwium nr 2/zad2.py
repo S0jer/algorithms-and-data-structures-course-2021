@@ -1,90 +1,64 @@
 # Paweł Jaśkowiec, 406165
 
-# Przechodzę BFS'em i znajduję ile jest najkrótszych ścieżek oraz trasę danej najkrótszej, jeśli znajdzie
-# mi więcej niż jedną najkrótszą trasę to zwracam None,  jeśli znajdzie mi jedną najkrótszą to sprawdzam które krawędzie mogę
-# usunąć nie rozspujniając grafu, jeśli mogę usunąć to zapisuję do tablicy które moge usunąć i sprawdzam kolejne
+# Algorytm polega na przejściu dwa razy BFSem raz z wierzchołka s, drugi raz z wierzchołka t.
+# Otrzymamy z tego odległości wierzchołka s od reszty wierzchołków oraz analogicznie dla t,
+# sumując wartości z obu tablic znajdujemy długość najkrótszej ścieżki oraz selekcjonujemy
+# wierzchołki należące do potencjalnej najkrótszej ścieżki ( suma odległości od wierzchołka s i t dla danego wierzchołka
+# musi być równa długości najkrótszej ścieżki )
+# mając zbiór tych wierzchołków zliczamy wierzchołki kolejno odległe o 1, 2, 3 itd. od wierzchołka s,
+# w przypadku otrzymania dla dwóch kolejnych odległości po jednym wierzchołku znajdujemy krawędź której usunięcie
+# wydłuży najkrótszą ścieżkę
 
-# Mam problem z testami bo wypisuję w innej kolejności ale odpowiedzi się zgadzają
+
+# Złożoność: V + E
+
 
 from zad2testy import runtests
 
-from queue import Queue
+from collections import deque
 
 
 def enlarge(G, s, t):
     n = len(G)
-    deleted = []
-    # znajduję ile najkrótszych ścieżek idzie do punktu docelowego oraz jaką trase idzie jeden z nich
-    arrivals, ile, answer = BFS(G, s, t)
+    roadFromS = BFS(G, s)
+    roadFromT = BFS(G, t)
+    minPathLength = roadFromS[0] + roadFromT[0]
 
-    if len(arrivals) > 1:
+    if roadFromS[t] == -1:
         return None
 
-    # sprawdzam które krawędzie z najkrótszej trasy mogę usunąć niszcząc tą trasę oraz nie rozspujniając grafu
-    # dzieki uzyciu BFS'a
-    for i in range(len(answer) - 1):
+    dp = [[] for _ in range(minPathLength + 1)]
 
-        G[answer[i]].remove(answer[i + 1])
-        G[answer[i + 1]].remove(answer[i])
-        print()
-        arrivals, ile, xyz = BFS(G, t, s)
+    for i in range(n):
+        if roadFromS[i] + roadFromT[i] == minPathLength:
+            dp[roadFromS[i]].append(i)
 
-        if ile == n:
-            deleted.append((answer[i + 1], answer[i]))
-
-        G[answer[i]].append(answer[i + 1])
-        G[answer[i + 1]].append(answer[i])
-
-    if len(deleted) > 0:
-        return deleted
+    for j in range(minPathLength):
+        if len(dp[j]) == 1 and len(dp[j + 1]) == 1:
+            return (dp[j][0], dp[j + 1][0])
 
     return None
 
 
-def BFS(G, s, t):
+def BFS(G, s):
     n = len(G)
-    Q = Queue()
-
-    answer = [t] * n
-    ile = 0
-    min_w = 1000
-    arrivals = []
-    waves = [0] * n
+    Q = deque()
     v = [-1] * n
-    v_parent = [-1] * n
+    v_d = [-1] * n
 
+    v_d[s] = 0
     v[s] = 1
-    Q.put(s)
-    while not Q.empty():
-        u = Q.get()
-        ile += 1
-        for i in G[u]:
+    Q.append(s)
 
-            waves[i] = waves[u] + 1
+    while len(Q) > 0:
+        u = Q.popleft()
+        for i in G[u]:
             if v[i] != 1:
                 v[i] = 1
-                v_parent[i] = u
-                Q.put(i)
-            x = t
-            # jesli znajde inna krótszą od obecnej to podmieniam
-            if i == t and waves[i] < min_w:
-                answer = [t]
-                min_w = waves[i]
-                while v_parent[x] != -1 and x != s:
-                    answer.append(v_parent[x])
-                    x = v_parent[x]
+                v_d[i] = v_d[u] + 1
+                Q.append(i)
 
-                arrivals = [v_parent[i]]
-            # jeśli jest wiecej niz jedna najkrotsza to dodaje wierzcholek z ktorego idzie
-            elif i == t and waves[i] == min_w:
-                answer = [t]
-                while v_parent[x] != -1 and x != s:
-                    answer.append(v_parent[x])
-                    x = v_parent[x]
-
-                arrivals.append(v_parent[i])
-
-    return arrivals, ile, answer
+    return v_d
 
 
 runtests(enlarge)

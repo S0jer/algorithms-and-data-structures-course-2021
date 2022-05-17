@@ -2,6 +2,7 @@
 
 # pomysł polega na znalezieniu rosnacych i malejacych podciagów od od punktu i=tego oraz znalezienu w tym zestawieniu
 # najdluzszego rosnacego/malejacego badz malejaco-rosnacego
+
 import operator
 
 from zad1testy import runtests

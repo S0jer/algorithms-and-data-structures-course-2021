@@ -54,4 +54,3 @@ def intuse(I, x, y):
 
 runtests(intuse)
 
-runtests(intuse)

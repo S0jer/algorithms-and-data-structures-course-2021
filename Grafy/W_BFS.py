@@ -38,4 +38,3 @@ v, v_d = BFS(G, 2)
 
 print(v)
 print(v_d)
-print(list)

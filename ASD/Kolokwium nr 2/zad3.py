@@ -49,7 +49,7 @@ def plan(T):
 
 
 def BFS_tank(G, j, ropa):
-    Q = Queue()
+    Q = PriorityQueue()
     n = len(G)
 
     ropa += G[0][j]

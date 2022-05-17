@@ -9,6 +9,7 @@
 # oraz odwołania do indeksów dla każdego możliwego ciągu i zapisuje je w tablicy 'P'
 
 
+
 def printAllLIS(A):
     n = len(A)
     P = [[-1] + [] * n for _ in range(n)]
