@@ -25,6 +25,7 @@ def guide(G, A, B):
         graph[G[j][1]][G[j][0]] = G[j][2]
 
     dp, parents = dijkstry(graph, A)
+    print(dp)
 
     road = get_road(parents, A, B)
 
@@ -35,22 +36,20 @@ def dijkstry(G, s):
     n = len(G)
     Q = PriorityQueue()
 
-    dp = [inf] * n
+    dp = [-inf] * n
     p = [-1] * n
-    v = [-1] * n
 
     dp[s] = inf
     Q.put((0, s))
 
     while not Q.empty():
-        u = Q.get()
-        v[u[1]] = 1
+        _, u = Q.get()
 
         for i in range(n):
-            if dp[i] > min(dp[u[1]], G[u[1]][i]) and G[u[1]][i] != -1 and v[i] == -1:
-                dp[i] = min(dp[u[1]], G[u[1]][i])
+            if dp[i] < min(dp[u], G[u][i]) and G[u][i] != -1:
+                dp[i] = min(dp[u], G[u][i])
                 Q.put((-1 * dp[i], i))
-                p[i] = u[1]
+                p[i] = u
 
     return dp, p
 

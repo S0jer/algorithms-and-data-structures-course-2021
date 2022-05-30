@@ -10,7 +10,7 @@
 def safe_flight(G, s, k, p, t):
     v = DFS_K(G, s, k, p, t)
 
-    if v[k[0]] == 1:
+    if v[k] == 1:
         return True
 
     return False
@@ -26,11 +26,11 @@ def DFS_K(G, s, k, p, t):
 
 
 def DFSVisit_K(G, u, v, p, t):
-    v[u[0]] = 1
+    v[u] = 1
 
-    for i in G[u[0]]:
+    for i in G[u]:
         if v[i[0]] != 1 and p - t <= i[1] <= p + t:
-            DFSVisit_K(G, i, v, p, t)
+            DFSVisit_K(G, i[0], v, p, t)
 
 
 graph = [[(1, 15), (3, 11), (2, 12)],
@@ -42,5 +42,5 @@ graph = [[(1, 15), (3, 11), (2, 12)],
          [(7, 14), (3, 15), (5, 13)],
          [(4, 17), (5, 18), (6, 10)]]
 
-s, k, p, t = (0, 0), (7, 0), 12, 2
+s, k, p, t = 0, 7, 12, 2
 print(safe_flight(graph, s, k, p, t))

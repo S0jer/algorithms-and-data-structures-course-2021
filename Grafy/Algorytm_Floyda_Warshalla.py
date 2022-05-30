@@ -1,9 +1,10 @@
 # Algorytm Floyda-Warshalla
+from math import inf
+
 
 def floyd_warshall(G, W):
     n = len(G)
 
-    inf = 100000
     d = [[inf] * n for _ in range(n)]
     p = [[-1] * n for _ in range(n)]
 
@@ -26,7 +27,6 @@ def floyd_warshall(G, W):
 def floyd_warshall_P(G, W):
     n = len(G)
 
-    inf = 100000
     d = [[inf] * n for _ in range(n)]
     p = [[-1] * n for _ in range(n)]
 

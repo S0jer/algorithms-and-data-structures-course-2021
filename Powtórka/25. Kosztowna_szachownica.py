@@ -12,6 +12,9 @@ from math import inf
 def kings_path(A, s, k):
     dp = dijkstry(A, s)
 
+    for j in A:
+        print(j)
+    print()
     for i in dp:
         print(i)
 

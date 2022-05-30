@@ -34,7 +34,6 @@ def BFS(G, s, k):
     v = [-1] * n
     v_parent = [-1] * n
     v_d = [0] * n
-    cycle = []
 
     v_d[s] = 0
     v[s] = 1
@@ -49,12 +48,7 @@ def BFS(G, s, k):
                 v_parent[i] = u
                 Q.put(i)
             elif v[i] == 1 and G[u][i] == 1 and v_d[i] == k - 1 and v_d[u] == k - 2:
-                cycle.append(s)
-                cycle.append(v_parent[u])
-                cycle.append(u)
-                cycle.append(i)
-                cycle.append(s)
-                return cycle
+                return [s, v_parent[u], u, i, s]
 
     return []
 
@@ -70,11 +64,12 @@ G = [[0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
      [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
      [0, 0, 0, 1, 0, 0, 0, 0, 1, 0]]
 
-G3 = [[0,1,1,1,1],
-    [1,0,1,1,1],
-    [1,1,0,0,1],
-    [1,1,0,0,1],
-    [1,1,1,1,0]]
+G3 = [[0, 1, 1, 1, 1],
+      [1, 0, 1, 1, 1],
+      [1, 1, 0, 0, 1],
+      [1, 1, 0, 0, 1],
+      [1, 1, 1, 1, 0]]
 
-cycle = find_cycle(G, 4)
-print(cycle)
+print(find_cycle(G, 4))
+print()
+print(find_cycle(G3, 4))

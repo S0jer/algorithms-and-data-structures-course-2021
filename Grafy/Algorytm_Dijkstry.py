@@ -69,5 +69,5 @@ G_ns = [[0, 1, 5, 0, 0],
         [0, 7, 0, 0, 1],
         [0, 8, 3, 1, 0]]
 
-print(dijkstry(G, 3))
+print(dijkstry(G, 0))
 print(dijkstra_M(G, 3))
