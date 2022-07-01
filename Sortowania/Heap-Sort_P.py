@@ -57,7 +57,7 @@ def insert_heap(A, num):
     n = len(A) - 1
     parent = (n - 1) // 2
     while parent >= 0:
-        if A[n] > A[parent]:
+        if A[n] < A[parent]:
             A[n], A[parent] = A[parent], A[n]
             n = parent
             parent = (n - 1) // 2
@@ -67,7 +67,8 @@ def insert_heap(A, num):
 
 def delete_heap(A, num):
     A.remove(num)
-    heapify(A, len(A), 0)
+    for i in range(len(A)):
+        heapify_min(A, len(A), i)
 
 
 if __name__ == '__main__':
@@ -76,9 +77,11 @@ if __name__ == '__main__':
     buildheap(A)
     buildheap_min(B)
     print(A, B)
-    insert_heap(A, 10)
+    insert_heap(B, 10)
     # heapsort(A)
     # heapsort_min(B)
     print(A, B)
-    delete_heap(A, 10)
-    print(A)
+    delete_heap(B, 1)
+    delete_heap(B, 2)
+    delete_heap(B, 3)
+    print(B)

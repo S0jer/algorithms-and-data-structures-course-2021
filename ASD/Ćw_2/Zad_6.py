@@ -29,8 +29,8 @@ def przedzialy(T):
 
     for i in range(n):
         A.append([T[i], 0])
-    print(A)
     quicksort(A, 0, len(A) - 1)
+    print(A)
 
     for i in range(n):
         for j in range(i, -1, -1):

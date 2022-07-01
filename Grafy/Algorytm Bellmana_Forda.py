@@ -1,6 +1,9 @@
+from math import inf
+
+
 def bellman_ford(G, s):
     n = len(G)
-    dp = [100000] * n
+    dp = [inf] * n
     p = [-1] * n
 
     dp[s] = 0
