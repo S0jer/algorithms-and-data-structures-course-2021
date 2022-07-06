@@ -8,6 +8,8 @@
 
 # Złozonosc programu: T  - jesli T rozumiemy przez łączną ilośc wciśnięć guzików z każdej m operacji
 
+# Wzorowe za pomocą drzew przedziałowych (chociaż chyba czasami mogą zadziałać gorzej niz brute)
+
 
 from zad3testy import runtests
 

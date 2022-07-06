@@ -10,34 +10,26 @@ def DFS_Bridge(G):
 
     for i in range(n):
         if v[i] == -1:
-            low, numbers, v_p, num = DFSVisit_Bridge(G, i, v, v_p, low, numbers, num)
-
-    for i in range(n):
-        if low[i] == numbers[i] and v_p[i] != -1:
-            bridges.append((v_p[i], i))
+            DFSVisit_Bridge(G, i, v, v_p, low, numbers, num, bridges)
 
     return low, bridges
 
 
-def DFSVisit_Bridge(G, u, v, v_p, low, numbers, num):
+def DFSVisit_Bridge(G, u, v, v_p, low, numbers, num, bridges):
     v[u], numbers[u], low[u] = 1, num, num
+    num += 1
 
     n = len(G)
     for i in range(n):
-
-        if v[i] == 1 and G[u][i] == 1 and i != v_p[u]:
-            low[u] = min(numbers[u], numbers[i])
-
         if v[i] != 1 and G[u][i] == 1:
-            num += 1
             v_p[i] = u
-            low, numbers, v_p, num = DFSVisit_Bridge(G, i, v, v_p, low, numbers, num)
-
-    for i in range(n):
-        if v[i] == 1 and G[u][i] == 1 and i != v_p[u]:
+            DFSVisit_Bridge(G, i, v, v_p, low, numbers, num, bridges)
             low[u] = min(low[u], low[i])
+            if low[i] > numbers[u]:
+                bridges.append((u, i))
 
-    return low, numbers, v_p, num
+        elif G[u][i] == 1 and i != v_p[u]:
+            low[u] = min(low[u], numbers[i])
 
 
 G = [[0, 1, 1, 0, 0, 0],
@@ -55,5 +47,5 @@ graph = [[0, 1, 0, 0, 1, 0, 0, 0],
          [0, 0, 0, 1, 0, 0, 1, 0],
          [0, 0, 0, 1, 0, 1, 0, 0],
          [0, 0, 0, 0, 1, 0, 0, 0]]
-
+# ([1, 1, 1, 4, 1, 4, 4, 8], [(2, 3), (4, 7)])
 print(DFS_Bridge(graph))

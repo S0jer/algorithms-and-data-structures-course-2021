@@ -4,8 +4,9 @@ from math import inf
 
 # Paweł Jaśkowiec, 406165
 
-# Pomysł polega na przechodzeniu ppo pierwszym wierszu i sprawdzaniu wielkości plamy kiedy mozna zatankować
-# (w trakcie rrealizacji :()
+# Dla kazdego poczatku plamy na indeksie 0 liczymy jej powierzchnie i zapisujemy w tablicy dlugosci n wysokosci 1
+# Mamy prosta droga z wartosciami o jakie mozemy w danym punkcie zatankowac i znajdujemy rozwiazania o minimalnej
+# ilości tankowań
 
 
 

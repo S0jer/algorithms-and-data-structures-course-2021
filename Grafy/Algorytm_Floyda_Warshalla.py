@@ -35,8 +35,6 @@ def floyd_warshall_P(G, W):
             if W[i][j] != 0:
                 d[i][j] = W[i][j]
                 p[i][j] = i
-            else:
-                d[i][j] = inf
 
     for t in range(n):
         for u in range(n):

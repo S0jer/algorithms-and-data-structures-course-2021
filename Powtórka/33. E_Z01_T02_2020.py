@@ -16,7 +16,6 @@ def frog(A):
     dp = [[[0, inf] for _ in range(1)] for _ in range(n)]
     dp[0].append([A[0], 0])
 
-    d = [[0 for _ in range(n)] for _ in range(n)]
 
     for i in range(n):
         for z in range(len(dp[i])):

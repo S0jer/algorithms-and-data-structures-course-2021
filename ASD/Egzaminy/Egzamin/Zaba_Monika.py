@@ -1,6 +1,6 @@
 from queue import PriorityQueue
 
-
+# To nie działa, dynamik w "ASD_2022/Egz_kol/Egz_2020/egzamin_popr_1_szablony/zad1.py"
 def zaba_monika(M, L, x, y):
     G, s, e = create_g(M, L, x, y)
     Q = PriorityQueue()

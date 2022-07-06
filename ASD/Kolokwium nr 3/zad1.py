@@ -4,13 +4,13 @@
 # a następnie wyznaczenie trasy za pomocą algorytmu podobnego do dijkstry z tą modyfikacją że w kolejce sortuje
 # po odległości od celu dla x, przy czym gdy tylko to mozliwe przesuwam y w kierunku konca
 
+# Alternatywne podejscie (na pewno poprawne) polega na utworzeniu grafu, gdzie punkt stanowi para pozycji na których
+# w tej samej chwili mogą znajdować się odległości i połączenie wierzchołkó jeśli z jednej pozycji jest możliwość
+# przeniesienia się do pożądanej pozycji, na tak powstałym grafie dijkstry czy coś, zanim tworzymy graf odpalamy
+# floyda warschalla zeby miec odleglosci miedzy punktami
+
 
 from zad1testy import runtests
-
-from collections import deque
-from math import inf
-from copy import deepcopy
-
 from math import inf
 from collections import deque
 

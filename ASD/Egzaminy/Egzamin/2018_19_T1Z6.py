@@ -1,9 +1,9 @@
 # Bob i praca
+from math import inf
 
 
 def impatientbob(T, k):
     n = len(T)
-    inf = 100000
     T.sort(key=lambda T: T[1])
 
     dp = [[inf] * (k + 1) for _ in range(n)]
@@ -18,6 +18,8 @@ def impatientbob(T, k):
                     dp[i][z + 1] = min(dp[j][z] + abs(T[j][1] - T[i][0]), dp[i][z + 1])
 
     best = inf
+    for row in dp:
+        print(row)
     for i in range(n):
         best = min(best, dp[i][k])
 

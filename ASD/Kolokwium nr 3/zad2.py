@@ -50,4 +50,3 @@ def cut(T, result):
 
 
 runtests(cutthetree)
-

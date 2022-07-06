@@ -27,9 +27,9 @@ def DFSscc(G):
 
 
 def DFSVisit_scc(G, u, v, v_d):
+    n = len(G)
     v[u] = 1
 
-    n = len(G)
     for i in range(n):
         if v[i] != 1 and G[u][i] == 1:
             DFSVisit_scc(G, i, v, v_d)

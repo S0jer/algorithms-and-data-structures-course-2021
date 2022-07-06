@@ -32,7 +32,7 @@ def enlarge(G, s, t):
     for i in range(n):
         if roadFromS[i] + roadFromT[i] == minPathLength:
             dp[roadFromS[i]].append(i)
-
+    print(dp)
     for j in range(minPathLength):
         if len(dp[j]) == 1 and len(dp[j + 1]) == 1:
             return (dp[j][0], dp[j + 1][0])

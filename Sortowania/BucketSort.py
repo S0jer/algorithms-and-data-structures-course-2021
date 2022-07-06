@@ -2,7 +2,7 @@ from random import randint, seed
 
 
 def bucket_sort(T):
-    a, n, idx, v_max, length = 0, len(T), 0, 0, 0
+    n, idx, v_max, length = len(T), 0, 0, 0
 
     for i in range(n):
         if abs(T[i]) > v_max:

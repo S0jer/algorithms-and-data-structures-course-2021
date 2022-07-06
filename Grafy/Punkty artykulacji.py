@@ -10,7 +10,7 @@ def DFS_Arcticulation(G):
 
     for i in range(n):
         if v[i] == -1:
-            low, numbers, v_p, v, num, arct = DFSV_Arct(G, i, v, v_p, low, numbers, num, arct)
+            DFSV_Arct(G, i, v, v_p, low, numbers, num, arct)
 
     print(arct)
     return low, arct
@@ -27,7 +27,7 @@ def DFSV_Arct(G, u, v, v_p, low, numbers, num, arct):
             children += 1
 
             v_p[i] = u
-            low, numbers, v_p, v, num, arct = DFSV_Arct(G, i, v, v_p, low, numbers, num, arct)
+            DFSV_Arct(G, i, v, v_p, low, numbers, num, arct)
 
             low[u] = min(low[u], low[i])
 
@@ -40,17 +40,13 @@ def DFSV_Arct(G, u, v, v_p, low, numbers, num, arct):
         elif i != v_p[u] and G[u][i] == 1:
             low[u] = min(low[u], numbers[i])
 
-    return low, numbers, v_p, v, num, arct
 
-
-
+# [True, False, False, True, False, False]
 graph = [[0, 1, 1, 1, 0, 0],
          [1, 0, 1, 0, 0, 0],
          [1, 1, 0, 0, 0, 0],
          [1, 0, 0, 0, 1, 1],
          [0, 0, 0, 1, 0, 1],
          [0, 0, 0, 1, 1, 0]]
-
-
 
 DFS_Arcticulation(graph)
