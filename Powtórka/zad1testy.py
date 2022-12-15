@@ -178,7 +178,7 @@ def runtests(f):
 
         result = f(bst)
 
-        print("res  = ", end='')
+        print("Res  = ", end='')
         PrintTree(result)
         print()
 

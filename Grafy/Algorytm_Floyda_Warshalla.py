@@ -24,7 +24,7 @@ def floyd_warshall(G, W):
     return d
 
 
-def floyd_warshall_P(G, W):
+def floyd_warshall_P(G):
     n = len(G)
 
     d = [[inf] * n for _ in range(n)]
@@ -32,8 +32,8 @@ def floyd_warshall_P(G, W):
 
     for i in range(n):
         for j in range(n):
-            if W[i][j] != 0:
-                d[i][j] = W[i][j]
+            if G[i][j] != 0:
+                d[i][j] = G[i][j]
                 p[i][j] = i
 
     for t in range(n):

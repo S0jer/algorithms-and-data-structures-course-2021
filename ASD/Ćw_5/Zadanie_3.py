@@ -25,6 +25,6 @@ def longest(A, B):
     print("\n", l)
 
 
-A = ['D', 'D', 'A', 'M', 'I', 'A', 'N', 'D']
-B = ['X', 'D', 'I', 'N', 'D']
+A = ['D', 'D', 'A', 'M', 'Res', 'A', 'N', 'D']
+B = ['X', 'D', 'Res', 'N', 'D']
 longest(A, B)
